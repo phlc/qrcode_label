@@ -12,6 +12,7 @@ PDF_FILE_NAME = "ignore_labels.pdf"
 MEASURE = 72.0 # inches
 PDF_PAGE_WIDTH = 4.8 * MEASURE
 PDF_PAGE_HEIGHT = 2.4 * MEASURE
+FONTSIZE = 8
 
 # auxiliary functions
 def generate_qrcode_image(data):
@@ -48,7 +49,7 @@ else:
   # create pdf file
   
   pdf_file = canvas.Canvas(PDF_FILE_NAME, pagesize = (PDF_PAGE_WIDTH, PDF_PAGE_HEIGHT) )
-  pdf_file.setFont("Helvetica", 8)
+  pdf_file.setFont("Helvetica", FONTSIZE)
 
   for info in data:
     pdf_file.setFont("Helvetica", 8)
