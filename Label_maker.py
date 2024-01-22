@@ -9,10 +9,12 @@ from PIL import Image
 # constants
 CSV_PATH = "ignore_info.csv"
 PDF_FILE_NAME = "ignore_labels.pdf"
-MEASURE = 72.0 # inches
-PDF_PAGE_WIDTH = 4.8 * MEASURE
-PDF_PAGE_HEIGHT = 2.4 * MEASURE
+MEASURE = 72.0 # transform to inches
+PDF_PAGE_WIDTH = MEASURE * 4.8 # inches
+PDF_PAGE_HEIGHT = MEASURE * 2.4 # inches
 FONTSIZE = 8
+DELIMITER = ";"
+QUOTECHAR = '"'
 
 # auxiliary functions
 def generate_qrcode_image(data):
@@ -40,9 +42,9 @@ else:
   data = []
 
   with csvfile:
-    reader = csv.reader(csvfile)
+    reader = csv.reader(csvfile, delimiter=DELIMITER, quotechar=QUOTECHAR)
     for row in reader:
-      data.append(row[0].split(";"))
+      data.append(row)
 
   header = data.pop(0)
   
